@@ -1,0 +1,29 @@
+version: "3"
+services:
+  frontend:
+    image: ubuntu:20.10
+    working_dir: /srv/frontend/public
+    command: bash -c "yarn && yarn start"
+    depends_on:
+      - api
+    volumes:
+      - "./frontend:/srv/frontend/public"
+    ports:
+      - "80:3000"
+
+  api:
+    image: node:12.18.2
+    working_dir: srv/app
+    depends_on:
+      - database
+    command: bash -c "yarn && yarn start"
+    ports:
+      - "3333:3333"
+    volumes:
+      - "./api:/srv/app"
+
+  database:
+    env_file: .mongo.env
+    image: mongo
+    ports:
+      - 27017:27017
