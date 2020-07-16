@@ -22,6 +22,15 @@ services:
     volumes:
       - "./api:/srv/app"
 
+  scm:
+    image: node:12.18.2
+    working_dir: /srv/app
+    command: bash -c "yarn && yarn start"
+    ports:
+      - 3030:3030
+    volumes:
+      - "./scm:/srv/app"
+
   database:
     env_file: .mongo.env
     image: mongo
