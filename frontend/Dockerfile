@@ -1,5 +1,5 @@
 FROM node:14 as builder
-WORKDIR /build
+WORKDIR /builder
 COPY package.json .
 RUN yarn install
 COPY /src ./src
@@ -8,5 +8,5 @@ RUN yarn build
 
 
 FROM nginx:1.21.0
-COPY --from=builder /build  /usr/share/nginx/html
+COPY --from=builder /builder/build  /usr/share/nginx/html
 EXPOSE 80
