@@ -1,0 +1,38 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-user
+  namespace: production
+data:
+  NODE_ENV: production
+  SERVER_PORT: "3020"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-user
+  namespace: homologation
+data:
+  NODE_ENV: staging
+  SERVER_PORT: "3020"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-scm
+  namespace: production
+data:
+  NODE_ENV: production
+  GITHUB_CLIENT_ID: any-id
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-scm
+  namespace: homologation
+data:
+  NODE_ENV: staging
+  GITHUB_CLIENT_ID: any-id
+---
+
