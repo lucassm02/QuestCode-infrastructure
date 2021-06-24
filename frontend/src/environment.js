@@ -25,23 +25,16 @@ const prod = {
   }
 };
 
-const config =
-  process.env.REACT_APP_STAGE === "production"
-    ? prod
-    : process.env.REACT_APP_STAGE === "staging"
-      ? staging
-      : dev;
-
-/*
-let config;
-if (process.env.REACT_APP_STAGE === "production") {
-  config = prod;
-} else if (process.env.REACT_APP_STAGE === "staging") {
-  config = staging;
-} else {
-  config = dev;
-}
-*/
+const config = (() =>{
+  switch (process.env.REACT_APP_STAGE) {
+    case 'production':
+      return prod;
+    case 'staging':
+      return staging;
+    default:
+      return dev;
+  }
+})()
 
 export default {
   // Add common config values here
