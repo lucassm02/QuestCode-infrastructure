@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend-deployment
-  namespace: staging
   labels:
     app: frontend
 spec:
@@ -17,7 +16,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: lucassm02/quest-code-backend-frontend:{{ Values.image.tag }}
+          image: lucassm02/quest-code-frontend:{{ .Values.image.tag }}
           resources:
             limits:
               memory: "100Mi"
