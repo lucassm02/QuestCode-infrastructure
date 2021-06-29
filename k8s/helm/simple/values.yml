@@ -1,0 +1,10 @@
+image:
+  tag: 1.7
+
+replicas: 1
+
+container:
+  port: 80
+
+service:
+  nodePort: 30080
